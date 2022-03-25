@@ -7,6 +7,7 @@ const Color shadowColorAccent = Color.fromRGBO(80, 142, 148, 1);
 const Color lightBlue = Color.fromRGBO(240, 250, 255, 1);
 const Color deepBlue = Color.fromRGBO(230, 250, 255, 1);
 const Color niceBlue = Color.fromRGBO(141, 193, 245, 1);
+const Color whiteColor = Colors.white;
 
 const LinearGradient mainGradient = LinearGradient(
     begin: Alignment.topCenter,
