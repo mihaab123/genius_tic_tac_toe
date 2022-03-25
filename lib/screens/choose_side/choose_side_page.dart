@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
 import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
-import 'package:genius_tic_tac_toe/screens/two_layers/two_players_page.dart';
+import 'package:genius_tic_tac_toe/screens/two_players/two_players_page.dart';
 import 'package:genius_tic_tac_toe/widgets/main_button.dart';
 import 'package:genius_tic_tac_toe/widgets/player_side.dart';
 import 'package:get/get.dart';
 
 class ChooseSidePage extends StatefulWidget {
-  const ChooseSidePage({Key? key}) : super(key: key);
+  final int type;
+  const ChooseSidePage({Key? key, required this.type}) : super(key: key);
 
   @override
   State<ChooseSidePage> createState() => _ChooseSidePageState();
@@ -81,7 +82,10 @@ class _ChooseSidePageState extends State<ChooseSidePage> {
                   callback: () {
                     _boardController.setPlayersSide(
                         chooseSide, chooseSide == 1 ? 2 : 1);
-                    Get.off(TwoPlayersPage());
+                    if (widget.type == 0)
+                      Get.off(TwoPlayersPage());
+                    else
+                      Get.off(TwoPlayersPage());
                   },
                   text: "continue".toUpperCase(),
                 ),

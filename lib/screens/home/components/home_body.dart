@@ -49,7 +49,9 @@ class HomeBody extends StatelessWidget {
                 width: Get.width * 0.4,
                 child: MainRoundedButton(
                     callback: () {
-                      Get.off(const ChooseSidePage());
+                      Get.off(const ChooseSidePage(
+                        type: 0,
+                      ));
                     },
                     color: whiteColor,
                     text: "with a friend".toUpperCase()),

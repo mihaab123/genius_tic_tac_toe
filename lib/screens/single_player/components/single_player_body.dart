@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
 import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
-import 'package:genius_tic_tac_toe/screens/two_layers/components/field.dart';
-import 'package:genius_tic_tac_toe/screens/two_layers/components/result.dart';
+import 'package:genius_tic_tac_toe/screens/two_players/components/field.dart';
+import 'package:genius_tic_tac_toe/screens/two_players/components/result.dart';
 import 'package:get/get.dart';
 
-class TwoPlayerBody extends StatelessWidget {
+class SinglePlayerBody extends StatelessWidget {
   final BoardController _boardController = Get.find<BoardController>();
-  TwoPlayerBody({Key? key}) : super(key: key);
+  SinglePlayerBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class TwoPlayerBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(40),
                     child: Text(
-                      "First are playing as \"$firstPlayer\", Second are playing as \"$secondPlayer\"",
+                      "First are playing as \"$firstPlayer\", PC are playing as \"$secondPlayer\"",
                       style: const TextStyle(
                           fontSize: 25,
                           color: whiteColor,
@@ -55,10 +55,18 @@ class TwoPlayerBody extends StatelessWidget {
                         children: List.generate(9, (index) {
                           return Field(
                             index: index,
+                            callback: () async {
+                              if (_boardController.currentState == 0 &&
+                                  _boardController.currentBoard[index] == 0) {
+                                await _boardController.setFieldValue(index);
+                              }
+                            },
                           );
                         })),
                   ),
-                  Result(),
+                  Result(
+                    type: 1,
+                  ),
                 ],
               );
             })),

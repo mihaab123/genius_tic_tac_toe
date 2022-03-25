@@ -26,7 +26,7 @@ class BoardController extends GetxController {
 
   setFieldValue(int index) async {
     currentBoard[index] = currentPlayer.value + 1;
-    await evaluateBoard();
+    await evaluateBoard(currentPlayer.value);
     currentPlayer.value = currentPlayer.value == 0 ? 1 : 0;
   }
 
@@ -46,7 +46,7 @@ class BoardController extends GetxController {
     return true;
   }
 
-  evaluateBoard() async {
+  evaluateBoard(int currentPlayer) async {
     for (var list in WIN_CONDITIONS_LIST) {
       if (currentBoard[list[0]] !=
               EMPTY_SPACE && // if a player has played here AND
@@ -54,16 +54,17 @@ class BoardController extends GetxController {
               currentBoard[
                   list[1]] && // if all three positions are of the same player
           currentBoard[list[0]] == currentBoard[list[2]]) {
-        currentState.value =
-            (currentPlayer.value == 0 ? FIRST_WIN : SECOND_WIN);
+        debugPrint("currentPlayer = $currentPlayer");
+        currentState.value = (currentPlayer == 0 ? FIRST_WIN : SECOND_WIN);
       }
     }
-
-    if (await isBoardFull()) {
-      currentState.value = DRAW;
-    } else {
-      currentState.value = NO_WINNERS_YET;
+    if (currentState.value == 0) {
+      if (await isBoardFull()) {
+        currentState.value = DRAW;
+      } else {
+        currentState.value = NO_WINNERS_YET;
+      }
+      debugPrint("currentState =$currentState");
     }
-    debugPrint("$currentState");
   }
 }

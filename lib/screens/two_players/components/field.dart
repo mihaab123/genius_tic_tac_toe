@@ -7,10 +7,12 @@ import 'package:get/get.dart';
 class Field extends StatelessWidget {
   final BoardController _boardController = Get.find<BoardController>();
   final int index;
+  final VoidCallback callback;
 
   final BorderSide _borderSide =
       const BorderSide(color: mainColor, width: 2.0, style: BorderStyle.solid);
-  Field({Key? key, required this.index}) : super(key: key);
+  Field({Key? key, required this.index, required this.callback})
+      : super(key: key);
 
   Border _determineBorder() {
     Border determinedBorder = Border.all();
@@ -79,12 +81,7 @@ class Field extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        if (_boardController.currentState == 0 &&
-            _boardController.currentBoard[index] == 0) {
-          await _boardController.setFieldValue(index);
-        }
-      },
+      onTap: callback,
       child: Container(
         margin: const EdgeInsets.all(0.0),
         decoration: BoxDecoration(border: _determineBorder()),

@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 
 class Result extends StatelessWidget {
   final BoardController _boardController = Get.find<BoardController>();
-  Result({Key? key}) : super(key: key);
+  final int type;
+  Result({Key? key, required this.type}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,10 @@ class Result extends StatelessWidget {
       if (_boardController.currentState == DRAW) result = "Game is over";
       if (_boardController.currentState == FIRST_WIN)
         result = "First Player Win";
-      if (_boardController.currentState == SECOND_WIN)
+      if (_boardController.currentState == SECOND_WIN) if (type == 2)
         result = "Second Player Win";
+      else
+        result = "PC Player Win";
       return Column(
         children: [
           Text(result,
