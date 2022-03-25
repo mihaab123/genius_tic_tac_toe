@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
 import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
 import 'package:genius_tic_tac_toe/screens/two_layers/components/field.dart';
+import 'package:genius_tic_tac_toe/screens/two_layers/components/result.dart';
 import 'package:get/get.dart';
 
 class TwoPlayerBody extends StatelessWidget {
@@ -24,7 +25,7 @@ class TwoPlayerBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(50),
+                    padding: const EdgeInsets.all(40),
                     child: Text(
                       "First are playing as \"$firstPlayer\", Second are playing as \"$secondPlayer\"",
                       style: const TextStyle(
@@ -57,6 +58,7 @@ class TwoPlayerBody extends StatelessWidget {
                           );
                         })),
                   ),
+                  Result(),
                 ],
               );
             })),

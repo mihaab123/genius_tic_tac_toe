@@ -57,7 +57,7 @@ class Field extends StatelessWidget {
   }
 
   Widget getCurrentField(int index) {
-    Widget _widget = Container(
+    Widget _widget = const SizedBox(
       height: 80,
       width: 80,
     );
@@ -80,7 +80,10 @@ class Field extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        await _boardController.setFieldValue(index);
+        if (_boardController.currentState == 0 &&
+            _boardController.currentBoard[index] == 0) {
+          await _boardController.setFieldValue(index);
+        }
       },
       child: Container(
         margin: const EdgeInsets.all(0.0),
