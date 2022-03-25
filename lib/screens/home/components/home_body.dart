@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
+import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
 import 'package:genius_tic_tac_toe/screens/choose_side/choose_side_page.dart';
 import 'package:genius_tic_tac_toe/widgets/main_button.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BoardController _boardController = Get.put(BoardController());
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(color: shadowColorAccent),
@@ -21,11 +23,12 @@ class HomeBody extends StatelessWidget {
               Text(
                 "Genius Tic Tac Toe",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: whiteColor,
                     fontSize: 40,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Muli'),
               ),
+
               //Image.asset("assets/images/app_logo.png"),
             ],
           ),
@@ -33,18 +36,24 @@ class HomeBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              MainRoundedButton(
-                callback: () {},
-                color: Colors.white,
-                text: "single player".toUpperCase(),
+              SizedBox(
+                width: Get.width * 0.4,
+                child: MainRoundedButton(
+                  callback: () {},
+                  color: whiteColor,
+                  text: "single player".toUpperCase(),
+                ),
               ),
               const SizedBox(width: 30),
-              MainRoundedButton(
-                  callback: () {
-                    Get.off(const ChooseSidePage());
-                  },
-                  color: Colors.white,
-                  text: "with a friend".toUpperCase()),
+              SizedBox(
+                width: Get.width * 0.4,
+                child: MainRoundedButton(
+                    callback: () {
+                      Get.off(const ChooseSidePage());
+                    },
+                    color: whiteColor,
+                    text: "with a friend".toUpperCase()),
+              ),
             ],
           ),
         ],

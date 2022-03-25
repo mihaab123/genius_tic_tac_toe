@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
+import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
 import 'package:genius_tic_tac_toe/screens/two_layers/two_players_page.dart';
 import 'package:genius_tic_tac_toe/widgets/main_button.dart';
-import 'package:genius_tic_tac_toe/widgets/side_o.dart';
-import 'package:genius_tic_tac_toe/widgets/side_x.dart';
+import 'package:genius_tic_tac_toe/widgets/player_side.dart';
 import 'package:get/get.dart';
 
 class ChooseSidePage extends StatefulWidget {
@@ -15,6 +15,7 @@ class ChooseSidePage extends StatefulWidget {
 
 class _ChooseSidePageState extends State<ChooseSidePage> {
   int chooseSide = 1;
+  final BoardController _boardController = Get.find<BoardController>();
   setChooseSide(int value) {
     setState(() {
       chooseSide = value;
@@ -48,9 +49,7 @@ class _ChooseSidePageState extends State<ChooseSidePage> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () => setChooseSide(1),
-                        child: SideX(
-                          size: 100,
-                        ),
+                        child: PlayerSide(size: 100, type: 1),
                       ),
                       Radio(
                         onChanged: (e) => setChooseSide(1),
@@ -64,9 +63,7 @@ class _ChooseSidePageState extends State<ChooseSidePage> {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () => setChooseSide(2),
-                        child: SideO(
-                          size: 100,
-                        ),
+                        child: PlayerSide(size: 100, type: 2),
                       ),
                       Radio(
                         onChanged: (e) => setChooseSide(2),
@@ -78,11 +75,16 @@ class _ChooseSidePageState extends State<ChooseSidePage> {
                   ),
                 ],
               ),
-              MainRoundedButton(
-                callback: () {
-                  Get.off(const TwoPlayersPage());
-                },
-                text: "continue".toUpperCase(),
+              SizedBox(
+                width: Get.width * 0.8,
+                child: MainRoundedButton(
+                  callback: () {
+                    _boardController.setPlayersSide(
+                        chooseSide, chooseSide == 1 ? 2 : 1);
+                    Get.off(TwoPlayersPage());
+                  },
+                  text: "continue".toUpperCase(),
+                ),
               ),
             ],
           ),
