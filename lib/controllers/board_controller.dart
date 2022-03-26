@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/conts.dart';
+import 'package:genius_tic_tac_toe/models/move_model.dart';
 import 'package:get/get.dart';
 
 class BoardController extends GetxController {
@@ -25,24 +26,20 @@ class BoardController extends GetxController {
     this.secondPlayer.value = secondPlayer;
   }
 
-  setFieldValue(int index) async {
+  setFieldValue(int index, int type) async {
     currentBoard[index] = currentPlayer.value + 1;
     await evaluateBoard(currentPlayer.value);
-    currentPlayer.value = currentPlayer.value == 0 ? 1 : 0;
+    if (type == 0) {
+      currentPlayer.value = currentPlayer.value == 0 ? 1 : 0;
+    } else {
+      getBestMove();
+    }
   }
 
   Future<bool> isBoardFull() async {
     for (int val in currentBoard) {
       if (val == EMPTY_SPACE) return false;
     }
-
-    return true;
-  }
-
-  Future<bool> isMoveLegal(int move) async {
-    if (move < 0 ||
-        move >= currentBoard.length ||
-        currentBoard[move] != EMPTY_SPACE) return false;
 
     return true;
   }
@@ -67,5 +64,13 @@ class BoardController extends GetxController {
       }
       debugPrint("currentState =$currentState");
     }
+  }
+
+  getBestMove() {
+    debugPrint("getBestMove = start");
+    Move _move = Move();
+    int nextIndex = _move.play(currentBoard, 1);
+    debugPrint("nextIndex = $nextIndex");
+    currentBoard.value[nextIndex] = 2;
   }
 }

@@ -6,6 +6,10 @@ const int DRAW = 2;
 
 const int EMPTY_SPACE = 0;
 
+const int WIN_SCORE = 100;
+const int DRAW_SCORE = 0;
+const int LOSE_SCORE = -100;
+
 const WIN_CONDITIONS_LIST = [
   [0, 1, 2],
   [3, 4, 5],

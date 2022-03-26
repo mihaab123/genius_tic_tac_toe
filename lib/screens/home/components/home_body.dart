@@ -28,8 +28,12 @@ class HomeBody extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Muli'),
               ),
-
-              //Image.asset("assets/images/app_logo.png"),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Image(
+                  image: AssetImage("assets/images/app_logo.png"),
+                ),
+              ),
             ],
           ),
           Row(
@@ -39,7 +43,11 @@ class HomeBody extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.4,
                 child: MainRoundedButton(
-                  callback: () {},
+                  callback: () {
+                    Get.off(const ChooseSidePage(
+                      type: 1,
+                    ));
+                  },
                   color: whiteColor,
                   text: "single player".toUpperCase(),
                 ),

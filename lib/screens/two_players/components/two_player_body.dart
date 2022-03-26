@@ -58,7 +58,7 @@ class TwoPlayerBody extends StatelessWidget {
                             callback: () async {
                               if (_boardController.currentState == 0 &&
                                   _boardController.currentBoard[index] == 0) {
-                                await _boardController.setFieldValue(index);
+                                await _boardController.setFieldValue(index, 0);
                               }
                             },
                           );
