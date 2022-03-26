@@ -17,6 +17,7 @@ class BoardController extends GetxController {
 
   initialLoad() async {
     currentBoard.value = List.generate(9, (index) => 0);
+    currentState.value = 0;
   }
 
   setPlayersSide(int firstPlayer, int secondPlayer) async {
