@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
+import 'package:genius_tic_tac_toe/widgets/loop_animation.dart';
 
 class PlayerSide extends StatelessWidget {
   final Widget icon;
@@ -20,10 +21,12 @@ class PlayerSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: size,
-      width: size,
-      child: icon,
+    return MyAnimation(
+      SizedBox(
+        height: size,
+        width: size,
+        child: icon,
+      ),
     );
   }
 }
