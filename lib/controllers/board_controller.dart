@@ -27,7 +27,8 @@ class BoardController extends GetxController {
   }
 
   setFieldValue(int index, int type) async {
-    currentBoard[index] = currentPlayer.value + 1;
+    currentBoard[index] =
+        currentPlayer.value == 0 ? firstPlayer.value : secondPlayer.value;
     await evaluateBoard(currentPlayer.value);
     if (type == 0) {
       currentPlayer.value = currentPlayer.value == 0 ? 1 : 0;
@@ -69,8 +70,9 @@ class BoardController extends GetxController {
   getBestMove() {
     debugPrint("getBestMove = start");
     Move _move = Move();
-    int nextIndex = _move.play(currentBoard, 1);
+    int nextIndex =
+        _move.play(currentBoard, _move.flipPlayer(currentPlayer.value));
     debugPrint("nextIndex = $nextIndex");
-    currentBoard.value[nextIndex] = 2;
+    currentBoard.value[nextIndex] = secondPlayer.value;
   }
 }
