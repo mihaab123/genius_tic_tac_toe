@@ -14,8 +14,9 @@ class MainRoundedButton extends StatelessWidget {
   final VoidCallback callback;
   final LinearGradient? gradient;
 
-  MainRoundedButton(
-      {required this.text,
+  const MainRoundedButton(
+      {Key? key,
+      required this.text,
       this.color = mainColor,
       required this.callback,
       this.round = 6,
@@ -29,7 +30,8 @@ class MainRoundedButton extends StatelessWidget {
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 15,
-          fontFamily: 'Muli')});
+          fontFamily: 'Muli')})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

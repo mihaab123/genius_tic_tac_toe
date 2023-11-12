@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genius_tic_tac_toe/contants/colors.dart';
 import 'package:genius_tic_tac_toe/controllers/board_controller.dart';
-import 'package:genius_tic_tac_toe/screens/single_player/single_player_page.dart';
 import 'package:genius_tic_tac_toe/screens/two_players/two_players_page.dart';
 import 'package:genius_tic_tac_toe/widgets/main_button.dart';
 import 'package:genius_tic_tac_toe/widgets/player_side.dart';
@@ -81,12 +80,11 @@ class _ChooseSidePageState extends State<ChooseSidePage> {
                 width: Get.width * 0.8,
                 child: MainRoundedButton(
                   callback: () {
+                    _boardController.currentPlayer.value = 0;
                     _boardController.setPlayersSide(
                         chooseSide, chooseSide == 1 ? 2 : 1);
-                    if (widget.type == 1)
-                      Get.off(SinglPlayerPage());
-                    else
-                      Get.off(TwoPlayersPage());
+
+                    Get.off(const TwoPlayersPage());
                   },
                   text: "continue".toUpperCase(),
                 ),

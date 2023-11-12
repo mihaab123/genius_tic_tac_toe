@@ -16,10 +16,13 @@ class HomeBody extends StatelessWidget {
       decoration: const BoxDecoration(color: shadowColorAccent),
       child: Column(
         children: [
-          Column(
+          const SizedBox(
+            height: 30,
+          ),
+          const Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
+            children: <Widget>[
               Text(
                 "Genius Tic Tac Toe",
                 style: TextStyle(
@@ -29,43 +32,28 @@ class HomeBody extends StatelessWidget {
                     fontFamily: 'Muli'),
               ),
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(16.0),
                 child: Image(
                   image: AssetImage("assets/images/app_logo.png"),
                 ),
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: Get.width * 0.4,
-                child: MainRoundedButton(
-                  callback: () {
-                    Get.off(const ChooseSidePage(
-                      type: 1,
-                    ));
-                  },
-                  color: whiteColor,
-                  text: "single player".toUpperCase(),
-                ),
-              ),
-              const SizedBox(width: 30),
-              SizedBox(
-                width: Get.width * 0.4,
-                child: MainRoundedButton(
-                    callback: () {
-                      Get.off(const ChooseSidePage(
-                        type: 0,
-                      ));
-                    },
-                    color: whiteColor,
-                    text: "with a friend".toUpperCase()),
-              ),
-            ],
+          const Spacer(),
+          SizedBox(
+            width: Get.width * 0.4,
+            child: MainRoundedButton(
+                callback: () {
+                  Get.off(const ChooseSidePage(
+                    type: 0,
+                  ));
+                },
+                color: whiteColor,
+                text: "Play".toUpperCase()),
           ),
+          const SizedBox(
+            height: 30,
+          )
         ],
       ),
     );

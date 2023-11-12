@@ -73,6 +73,6 @@ class BoardController extends GetxController {
     int nextIndex =
         _move.play(currentBoard, _move.flipPlayer(currentPlayer.value));
     debugPrint("nextIndex = $nextIndex");
-    currentBoard.value[nextIndex] = secondPlayer.value;
+    currentBoard[nextIndex] = secondPlayer.value;
   }
 }

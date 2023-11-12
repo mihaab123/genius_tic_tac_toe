@@ -38,7 +38,7 @@ class TwoPlayerBody extends StatelessWidget {
                   Container(
                     height: 300,
                     width: 300,
-                    padding: EdgeInsets.all(30),
+                    padding: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
                       color: whiteColor,
                       borderRadius: BorderRadius.circular(10),

@@ -4,7 +4,7 @@ import 'package:simple_animations/simple_animations.dart';
 class MyAnimation extends StatelessWidget {
   final Widget child;
 
-  MyAnimation(this.child);
+  const MyAnimation(this.child, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

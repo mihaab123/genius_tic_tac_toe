@@ -5,8 +5,8 @@ import 'package:genius_tic_tac_toe/widgets/loop_animation.dart';
 class PlayerSide extends StatelessWidget {
   final Widget icon;
   final Color color;
-  double size;
-  int type;
+  final double size;
+  final int type;
   PlayerSide({
     Key? key,
     required this.size,
