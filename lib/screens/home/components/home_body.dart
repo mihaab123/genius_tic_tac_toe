@@ -24,7 +24,7 @@ class HomeBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Genius Tic Tac Toe",
+                "Big Game X-0",
                 style: TextStyle(
                     color: whiteColor,
                     fontSize: 40,

@@ -1,4 +1,4 @@
-package com.genius.tictactoe.genius_tic_tac_toe
+package com.bgtc.gmte
 
 import io.flutter.embedding.android.FlutterActivity
 
