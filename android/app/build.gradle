@@ -50,11 +50,24 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        release {
+            storeFile file("$rootDir/big_gamex.jks")
+            storePassword "70#H]2%=Y#u9"
+            keyAlias "big_gamex"
+            keyPassword "70#H]2%=Y#u9"
+        }
+    }
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+            manifestPlaceholders.appName = "Big Game X $flutterVersionName"
+            setProperty("archivesBaseName", "Big Game X." + flutterVersionName)
+        }
+        debug {
+            signingConfig signingConfigs.release
+            manifestPlaceholders.appName = "Big Game X $flutterVersionName"
+            setProperty("archivesBaseName", "Big Game X." + flutterVersionName)
         }
     }
 }
